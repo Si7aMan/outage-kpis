@@ -1,5 +1,5 @@
 ## KPI.py
-Code to get the insyfficient records of the given Daily Outage.
+Code to get the insufficient records of the given Daily Outage.
 
 
 ## Used Language and Linraries:
