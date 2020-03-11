@@ -16,7 +16,7 @@ for folders, sub_folders, file in os.walk('D:\\MSU\\KPIs\\'):
 
 
 # Removing Zagazig and Fayoum, also sorting by Duration
-df = df.loc[(df['Region'] != "Zagazig") & (df['Region'] != "Fayoum")].sort_values(['Duration'], ascending=False)
+df = df.loc[(df['Region'] != "Menoufia") & (df['Region'] != "Zagazig") & (df['Region'] != "Fayoum")].sort_values(['Duration'], ascending=False)
 
 regions = ['Delta',
  'Tagamo3',
@@ -44,8 +44,9 @@ df.loc[(df['Owner'] != "FO") & (df['RootCause'].isnull()), 'SuffComment'] = "NOT
 df.loc[(df['Owner'] == "EM") & (df['Access'] != True) & (df['SubCategory'] == "Generator") &(df['RootCause'].str.contains("fail|down|cut|gen problem|generator problem", flags=re.I, regex=True)), 'SuffComment'] = "NOT_OK"
 df.loc[(df['Owner'] != 'FO') & (df['RootCause'] == '\"\"'), 'SuffComment'] = "NOT_OK"
 df.to_excel('modified.xlsx', index=False)
-## Coloring the NOT_OK rows
 
+
+## Coloring the NOT_OK rows
 df = pd.read_excel('modified.xlsx')
 df = df.sort_values(['SuffComment', 'Owner'], ascending=[True, True])
 
